@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>realtest04 - Elite Frontend & UI/UX Portfolio</title>
+    <meta name="description" content="An award-winning portfolio showcasing my expertise in frontend development and UI/UX design.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN (with custom config) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-yellow': '#FFD700', // Gold-like yellow
+                        'accent-yellow': '#FFC107', // Amber-like yellow
+                        'light-white': '#F9FAFB', // Off-white
+                        'dark-text': '#212121',
+                        'light-text': '#555555',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to right bottom, rgba(255, 215, 0, 0.8), rgba(255, 193, 7, 0.8))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for global styles and scroll animations -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #212121; /* dark-text */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: #212121; /* dark-text */
+        }
+        /* Base styles for scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px); /* Default for fade-in-up */
+        }
+        .animate-on-scroll.fade-in {
+            transform: none; /* Override for simple fade */
+        }
+        .animate-on-scroll.slide-in-left {
+            transform: translateX(-50px);
+        }
+        .animate-on-scroll.slide-in-right {
+            transform: translateX(50px);
+        }
+
+        /* State when element is in view */
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-light-white antialiased">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 bg-white/30 backdrop-blur-lg shadow-sm transition-all duration-300">
+        <nav class="container mx-auto flex justify-between items-center max-w-7xl">
+            <a href="#home" class="text-2xl font-bold font-serif text-dark-text hover:text-primary-yellow transition-colors duration-300">realtest04</a>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-dark-text text-2xl focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-lg font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300">Home</a></li>
+                <li><a href="#about" class="text-lg font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300">About</a></li>
+                <li><a href="#services" class="text-lg font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300">Services</a></li>
+                <li><a href="#projects" class="text-lg font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300">Projects</a></li>
+                <li><a href="#contact" class="text-lg font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu (initially hidden) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md px-6 py-4 mt-4 rounded-lg shadow-lg">
+            <ul class="flex flex-col space-y-4">
+                <li><a href="#home" class="block text-xl font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300 py-2">Home</a></li>
+                <li><a href="#about" class="block text-xl font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300 py-2">About</a></li>
+                <li><a href="#services" class="block text-xl font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300 py-2">Services</a></li>
+                <li><a href="#projects" class="block text-xl font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300 py-2">Projects</a></li>
+                <li><a href="#contact" class="block text-xl font-medium text-dark-text hover:text-primary-yellow transition-colors duration-300 py-2">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden hero-bg" style="background-image: url('https://source.unsplash.com/random/1600x900?abstract,tech,yellow,design');">
+            <div class="absolute inset-0 bg-hero-gradient z-10"></div>
+            <div class="relative z-20 p-6 max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-on-scroll fade-in">
+                    Crafting <span class="text-primary-yellow">Digital Excellence</span> <br> Through Design & Code
+                </h1>
+                <p class="text-lg md:text-xl text-white mb-10 opacity-90 animate-on-scroll fade-in delay-200">
+                    I bring visions to life with stunning frontend development and intuitive UI/UX design.
+                </p>
+                <a href="#projects" class="inline-block px-8 py-4 bg-primary-yellow text-dark-text font-semibold text-lg rounded-full shadow-lg 
+                                          hover:bg-accent-yellow transform hover:scale-105 transition-all duration-300 ease-in-out animate-on-scroll fade-in-up delay-400">
+                    Explore My Work <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32 bg-light-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll slide-in-left">
+                        <img src="https://source.unsplash.com/random/800x600?portrait,professional,developer" alt="Professional Portrait" class="rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500">
+                    </div>
+                    <div class="animate-on-scroll slide-in-right">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-dark-text">About <span class="text-primary-yellow">realtest04</span></h2>
+                        <p class="text-lg text-light-text leading-relaxed mb-6">
+                            I am a Senior Frontend Engineer and UI/UX Designer with a passion for building beautiful, functional, and user-centric digital experiences. My expertise spans across modern web technologies, translating complex ideas into elegant, responsive interfaces.
+                        </p>
+                        <p class="text-lg text-light-text leading-relaxed mb-6">
+                            With a keen eye for detail and a commitment to innovation, I specialize in creating seamless user journeys, robust codebases, and visually captivating designs that truly stand out.
+                        </p>
+                        <a href="#contact" class="inline-block px-6 py-3 border-2 border-primary-yellow text-primary-yellow font-medium rounded-full 
+                                                  hover:bg-primary-yellow hover:text-white transition-all duration-300 ease-in-out">
+                            Get In Touch <i class="fas fa-envelope ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dark-text animate-on-scroll fade-in">My <span class="text-primary-yellow">Core Services</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-100">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-palette"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">UI/UX Design</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Crafting intuitive, engaging, and aesthetically pleasing user interfaces and experiences that delight users.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-200">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-code"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">Frontend Development</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Building responsive, performant, and maintainable web applications using modern frameworks and tools.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-300">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-mobile-alt"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">Responsive Design</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Ensuring seamless user experiences across all devices, from desktops to mobile phones, with a mobile-first approach.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-400">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-brush"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">Branding & Identity</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Developing strong brand identities that resonate with your target audience and enhance recognition.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-500">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-globe"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">Web Performance</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Optimizing websites for speed and efficiency, delivering a smooth and fast browsing experience.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-light-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105
+                                animate-on-scroll fade-in-up delay-600">
+                        <div class="text-5xl text-primary-yellow mb-6"><i class="fas fa-users-cog"></i></div>
+                        <h3 class="text-2xl font-bold mb-4 text-dark-text">Consultation & Strategy</h3>
+                        <p class="text-light-text leading-relaxed">
+                            Providing expert advice on digital strategy, user experience, and technical implementation for your projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32 bg-light-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dark-text animate-on-scroll fade-in">My Recent <span class="text-primary-yellow">Projects</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up">
+                        <img src="https://source.unsplash.com/random/1200x800?ui,website,modern" alt="Project Image 1" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Project Alpha</h3>
+                            <p class="text-light-text mb-4">A sleek e-commerce platform with intuitive navigation and stunning product displays.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up delay-100">
+                        <img src="https://source.unsplash.com/random/1200x800?ux,dashboard,analytics" alt="Project Image 2" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Dashboard Reimagined</h3>
+                            <p class="text-light-text mb-4">A complete redesign of an analytics dashboard for improved data visualization and user experience.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up delay-200">
+                        <img src="https://source.unsplash.com/random/1200x800?branding,startup,app" alt="Project Image 3" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Mobile App Concept</h3>
+                            <p class="text-light-text mb-4">Designed a captivating mobile app concept for a lifestyle brand, focusing on seamless interactions.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 4 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up delay-300">
+                        <img src="https://source.unsplash.com/random/1200x800?tech,landingpage,clean" alt="Project Image 4" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Modern Landing Page</h3>
+                            <p class="text-light-text mb-4">Developed a high-conversion landing page with elegant animations and clear CTAs.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up delay-400">
+                        <img src="https://source.unsplash.com/random/1200x800?designsystem,component,library" alt="Project Image 5" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Design System Creation</h3>
+                            <p class="text-light-text mb-4">Built a comprehensive design system for a large enterprise, ensuring consistency and scalability.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 6 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden group animate-on-scroll fade-in-up delay-500">
+                        <img src="https://source.unsplash.com/random/1200x800?webdev,blog,minimalist" alt="Project Image 6" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-dark-text">Minimalist Blog Design</h3>
+                            <p class="text-light-text mb-4">Created a clean and minimalist blog design focused on readability and content delivery.</p>
+                            <a href="#" class="text-primary-yellow font-semibold hover:underline flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 md:py-32 bg-primary-yellow">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dark-text animate-on-scroll fade-in">What Clients <span class="text-white">Say</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Testimonial 1 -->
+                    <div class="p-8 bg-white rounded-xl shadow-xl animate-on-scroll fade-in-up">
+                        <i class="fas fa-quote-left text-accent-yellow text-4xl mb-4"></i>
+                        <p class="text-lg text-light-text italic mb-6">
+                            "realtest04 exceeded all expectations! Their design prowess and frontend development skills are truly top-tier. Highly recommend!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://source.unsplash.com/random/100x100?face,man" alt="Client 1" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-dark-text">John Doe</p>
+                                <p class="text-sm text-light-text">CEO, Tech Innovators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="p-8 bg-white rounded-xl shadow-xl animate-on-scroll fade-in-up delay-100">
+                        <i class="fas fa-quote-left text-accent-yellow text-4xl mb-4"></i>
+                        <p class="text-lg text-light-text italic mb-6">
+                            "The attention to detail and commitment to user experience was unparalleled. A truly professional and talented individual."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://source.unsplash.com/random/100x100?face,woman" alt="Client 2" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-dark-text">Jane Smith</p>
+                                <p class="text-sm text-light-text">Marketing Director, Global Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="p-8 bg-white rounded-xl shadow-xl animate-on-scroll fade-in-up delay-200">
+                        <i class="fas fa-quote-left text-accent-yellow text-4xl mb-4"></i>
+                        <p class="text-lg text-light-text italic mb-6">
+                            "Working with realtest04 was a breeze. They understood our vision perfectly and delivered an outstanding product."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://source.unsplash.com/random/100x100?face,developer" alt="Client 3" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-dark-text">Michael Chen</p>
+                                <p class="text-sm text-light-text">Founder, Creative Agency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-light-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-dark-text animate-on-scroll fade-in">Let's <span class="text-primary-yellow">Connect</span></h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="p-8 bg-white rounded-xl shadow-xl animate-on-scroll slide-in-left">
+                        <h3 class="text-3xl font-bold mb-6 text-dark-text">Send Me a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-light-text text-lg font-medium mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-primary-yellow focus:border-primary-yellow transition-all duration-300" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-light-text text-lg font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-primary-yellow focus:border-primary-yellow transition-all duration-300" placeholder="your@email.com" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-light-text text-lg font-medium mb-2">Message</label>
+                                <textarea id="message" rows="6" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-primary-yellow focus:border-primary-yellow transition-all duration-300" placeholder="Tell me about your project or inquiry..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-8 py-4 bg-primary-yellow text-dark-text font-semibold text-lg rounded-full shadow-lg 
+                                                          hover:bg-accent-yellow transform hover:scale-105 transition-all duration-300 ease-in-out">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="space-y-10 animate-on-scroll slide-in-right">
+                        <div class="p-8 bg-white rounded-xl shadow-xl">
+                            <h3 class="text-3xl font-bold mb-4 text-dark-text">Contact Information</h3>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-envelope text-primary-yellow text-2xl mr-4"></i>
+                                <a href="mailto:hello@realtest04.com" class="text-light-text text-lg hover:text-primary-yellow transition-colors">hello@realtest04.com</a>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-phone text-primary-yellow text-2xl mr-4"></i>
+                                <a href="tel:+1234567890" class="text-light-text text-lg hover:text-primary-yellow transition-colors">+1 (234) 567-890</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-primary-yellow text-2xl mr-4"></i>
+                                <p class="text-light-text text-lg">Your City, State, Country</p>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-white rounded-xl shadow-xl">
+                            <h3 class="text-3xl font-bold mb-4 text-dark-text">Follow Me</h3>
+                            <div class="flex space-x-6 text-3xl">
+                                <a href="#" class="text-light-text hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-light-text hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-github"></i></a>
+                                <a href="#" class="text-light-text hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-light-text hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-text text-white py-12 md:py-16">
+        <div class="container mx-auto px-6 max-w-7xl text-center">
+            <h3 class="text-3xl font-bold font-serif mb-6 text-primary-yellow">realtest04</h3>
+            <p class="text-lg opacity-80 mb-8">
+                Frontend Engineer & UI/UX Designer <br> Building beautiful and functional web experiences.
+            </p>
+            <div class="flex justify-center space-x-6 text-2xl mb-8">
+                <a href="#" class="text-white hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-primary-yellow transform hover:scale-110 transition-transform duration-300"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="border-t border-gray-700 pt-8 mt-8">
+                <p class="text-md opacity-70">&copy; <span id="current-year"></span> realtest04. All rights reserved.</p>
+                <p class="text-sm opacity-60 mt-2">Designed with <i class="fas fa-heart text-red-500"></i> and code.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity and scroll animations -->
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Navbar toggle for mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Get the fixed header height to offset scroll position
+                    const headerOffset = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset - 20; // Added extra padding
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Hide mobile menu after clicking a link
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', false);
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null, // viewport as the root
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Optional: Add a slight delay for subsequent items in the same section
+        // This is handled by `delay-X00` classes in HTML, but if not using Tailwind's JIT for delays, JS could apply.
+        // For Tailwind JIT, make sure to add delay to tailwind.config if needed (already extended transitionDelay in default tailwind)
+        // e.g., transition-delay: 100ms;
+        // Tailwind JIT handles utility classes like `delay-100` so no explicit JS needed for that.
+    </script>
+</body>
+</html>
